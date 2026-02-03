@@ -209,16 +209,30 @@ function logout() {
     if(confirm("Encerrar sessão?")) { localStorage.removeItem("avaliadorDados"); location.reload(); }
 }
 
-function limitarDecimal(campo, max){
+function limitarDecimal(campo, max) {
+    // Substitui vírgula por ponto para validar o número
     let valor = campo.value.replace(',', '.').replace(/[^0-9.]/g, '');
-    if (max && parseFloat(valor) > max) valor = max.toString();
-    campo.value = valor.replace('.', ',');
+    let num = parseFloat(valor);
+
+    // Se houver um máximo definido e o número for maior que ele
+    if (max !== undefined && !isNaN(num) && num > max) {
+        alert("Atenção: O desconto máximo para este campo é " + max.toFixed(2).replace('.', ','));
+        campo.value = max.toFixed(2).replace('.', ',');
+    } else {
+        // Apenas limpa caracteres inválidos enquanto digita
+        campo.value = valor.replace('.', ',');
+    }
     calc();
 }
 
 function formatar(campo) {
     let n = parseFloat(campo.value.replace(',', '.'));
-    campo.value = isNaN(n) ? "0,00" : n.toFixed(2).replace('.', ',');
+    if (isNaN(n)) {
+        campo.value = "0,00";
+    } else {
+        campo.value = n.toFixed(2).replace('.', ',');
+    }
+    calc(); // Garante o cálculo final após perder o foco
 }
 
 function v(id) {
@@ -305,6 +319,7 @@ function limparFormulario() {
 </script>
 </body>
 </html>
+
 
 
 
