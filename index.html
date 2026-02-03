@@ -104,9 +104,9 @@ footer {
     <div class="box">
         <h3>Fundamento da Voz (3,00)</h3>
         <h3>(Descontos)</h3>
-        <div class="linha-nota"><span class="texto">Impostação (0,50)</span><span class="pontilhado"></span><input id="voz1" class="input-nota" oninput="limitarDecimal(this, 0.5)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Dicção (0,50)</span><span class="pontilhado"></span><input id="voz2" class="input-nota" oninput="limitarDecimal(this, 0.5)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Inflexão (0,50)</span><span class="pontilhado"></span><input id="voz3" class="input-nota" oninput="limitarDecimal(this, 0.5)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Impostação (até 0,50)</span><span class="pontilhado"></span><input id="voz1" class="input-nota" oninput="limitarDecimal(this, 0.5)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Dicção (até 0,50)</span><span class="pontilhado"></span><input id="voz2" class="input-nota" oninput="limitarDecimal(this, 0.5)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Inflexão (até 0,50)</span><span class="pontilhado"></span><input id="voz3" class="input-nota" oninput="limitarDecimal(this, 0.5)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
         <div class="resumo-direita"><span>DESC: <b id="descVoz">0,00</b></span><span>Nota: <b id="notaVoz">3,00</b></span></div>
         <textarea id="obsVoz" placeholder="Obs Voz"></textarea>
     </div>
@@ -114,9 +114,9 @@ footer {
         <div class="box">
         <h3>Expressão Corporal (2,00)</h3>
         <h3>(Descontos)</h3>
-        <div class="linha-nota"><span class="texto">Facial (0,30)</span><span class="pontilhado"></span><input id="exp1" class="input-nota" oninput="limitarDecimal(this, 0.3)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Gestual (0,30)</span><span class="pontilhado"></span><input id="exp2" class="input-nota" oninput="limitarDecimal(this, 0.3)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Postura Cênica (0,40)</span><span class="pontilhado"></span><input id="exp3" class="input-nota" oninput="limitarDecimal(this, 0.4)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Facial (até 0,30)</span><span class="pontilhado"></span><input id="exp1" class="input-nota" oninput="limitarDecimal(this, 0.3)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Gestual (até 0,30)</span><span class="pontilhado"></span><input id="exp2" class="input-nota" oninput="limitarDecimal(this, 0.3)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Postura Cênica (até 0,40)</span><span class="pontilhado"></span><input id="exp3" class="input-nota" oninput="limitarDecimal(this, 0.4)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
         <div class="resumo-direita"><span>DESC: <b id="descExp">0,00</b></span><span>Nota: <b id="notaExp">2,00</b></span></div>
         <textarea id="obsExp" placeholder="Obs Expressão"></textarea>
     </div>
@@ -139,9 +139,9 @@ footer {
         <div class="box">
         <h3>Fidelidade ao Texto (1,00)</h3>
         <h3>(Descontos)</h3>
-        <div class="linha-nota"><span class="texto">Letra / Palavra (0,20)</span><span class="pontilhado"></span><input id="fid1" class="input-nota" oninput="limitarDecimal(this, 0.2)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Verso / Estrofe (0,40)</span><span class="pontilhado"></span><input id="fid2" class="input-nota" oninput="limitarDecimal(this, 0.4)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Esqueceu / Lembrado (0,40)</span><span class="pontilhado"></span><input id="fid3" class="input-nota" oninput="limitarDecimal(this, 0.4)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Letra / Palavra (até 0,20)</span><span class="pontilhado"></span><input id="fid1" class="input-nota" oninput="limitarDecimal(this, 0.2)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Verso / Estrofe (até 0,40)</span><span class="pontilhado"></span><input id="fid2" class="input-nota" oninput="limitarDecimal(this, 0.4)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Esqueceu / Lembrado (até 0,40)</span><span class="pontilhado"></span><input id="fid3" class="input-nota" oninput="limitarDecimal(this, 0.4)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
         <div class="resumo-direita"><span>DESC: <b id="descFid">0,00</b></span><span>Nota: <b id="notaFid">1,00</b></span></div>
         <textarea id="obsFid" placeholder="Obs Fidelidade"></textarea>
     </div>
@@ -305,6 +305,7 @@ function limparFormulario() {
 </script>
 </body>
 </html>
+
 
 
 
