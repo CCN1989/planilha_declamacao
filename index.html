@@ -5,12 +5,10 @@
 <title>Avaliação – Declamação</title>
 
 <style>
-/* Seus estilos originais mantidos */
 body{font-family:Arial;background:#9c8a8a;margin:0;padding:10px}
-.container{max-width:1200px;margin:auto;background:#fff;border:2px solid #000; display:none;} /* Escondido até logar */
+.container{max-width:1200px;margin:auto;background:#fff;border:2px solid #000; display:none;} 
 .header{background:#ffe066;border-bottom:2px solid #000;padding:10px}
 
-/* TELA DE LOGIN */
 #telaLogin {
     max-width: 400px;
     margin: 100px auto;
@@ -32,7 +30,6 @@ body{font-family:Arial;background:#9c8a8a;margin:0;padding:10px}
     font-weight: bold;
 }
 
-/* Resto dos seus estilos */
 .linha{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:5px;padding:5px;background:#ffe066}
 .grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:5px;padding:5px}
 .box{border:2px solid #000;background:#ffe066;padding:5px;font-size:13px}
@@ -65,211 +62,164 @@ button{padding:10px 30px;font-size:16px;font-weight:bold; cursor:pointer}
 </div>
 
 <div id="appContainer" class="container">
-
-<div class="header" style="display:grid;grid-template-columns:100px 1fr 100px;align-items:center">
-<img src="https://raw.githubusercontent.com/CCN1989/Imagens/refs/heads/main/Logo%20pequeno.png" height="70">
-<div style="text-align:center">
-<strong>MTG – MOVIMENTO TRADICIONALISTA GAÚCHO</strong><br>
-2º Chamas da Poesia – CTG Chama Nativa – 12ª RT<br>
-(28/02/26 e 01/03/26)<br>
-<strong>Planilha de Avaliação – Declamação</strong>
-</div>
-<img src="https://github.com/CCN1989/Imagens/blob/main/12RT.png?raw=true" height="70">
-</div>
-
-<div style="padding:8px;background:#ffe066;border-bottom:2px solid #000">
-<select id="codCandidato">
-<option value="">Selecione CÓDIGO do candidato *</option>
-</select>
-</div>
-
-<div class="linha">
-<div>Categoria:<br><b id="categoria"></b></div>
-<div>Concorrente:<br><b id="concorrente"></b></div>
-<div>Entidade:<br><b id="entidade"></b></div>
-<div>Município:<br><b id="municipio"></b></div>
-<div>RT:<br><b id="rt"></b></div>
-</div>
-
-<div style="padding:8px;background:#ffe066;border-bottom:2px solid #000">
-<b>Poema:</b><br>
-<input id="poema" type="text">
-</div>
-
-<div class="grid">
-    <div class="box">
-        <h3>Fundamento da Voz (3,00)</h3>
-        <h3>(Descontos)</h3>
-        <div class="linha-nota"><span class="texto">Impostação (0,50)</span><span class="pontilhado"></span><input id="voz1" class="input-nota" oninput="limitarDecimal(this, 0.5)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Dicção (0,50)</span><span class="pontilhado"></span><input id="voz2" class="input-nota" oninput="limitarDecimal(this, 0.5)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Inflexão (0,50)</span><span class="pontilhado"></span><input id="voz3" class="input-nota" oninput="limitarDecimal(this, 0.5)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="resumo-direita"><span>DESC: <b id="descVoz">0,00</b></span><span>Nota: <b id="notaVoz">3,00</b></span></div>
-        <textarea id="obsVoz" placeholder="Obs Voz"></textarea>
+    <div class="header" style="display:grid;grid-template-columns:100px 1fr 100px;align-items:center">
+        <img src="https://raw.githubusercontent.com/CCN1989/Imagens/refs/heads/main/Logo%20pequeno.png" height="70">
+        <div style="text-align:center">
+            <strong>MTG – MOVIMENTO TRADICIONALISTA GAÚCHO</strong><br>
+            2º Chamas da Poesia – CTG Chama Nativa – 12ª RT<br>
+            (28/02/26 e 01/03/26)<br>
+            <strong>Planilha de Avaliação – Declamação</strong>
+        </div>
+        <img src="https://github.com/CCN1989/Imagens/blob/main/12RT.png?raw=true" height="70">
     </div>
 
-    <div class="box">
-        <h3>Expressão Corporal (2,00)</h3>
-        <h3>(Descontos)</h3>
-        <div class="linha-nota"><span class="texto">Facial (0,30)</span><span class="pontilhado"></span><input id="exp1" class="input-nota" oninput="limitarDecimal(this, 0.3)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Gestual (0,30)</span><span class="pontilhado"></span><input id="exp2" class="input-nota" oninput="limitarDecimal(this, 0.3)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Postura Cênica (0,40)</span><span class="pontilhado"></span><input id="exp3" class="input-nota" oninput="limitarDecimal(this, 0.4)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="resumo-direita"><span>DESC: <b id="descExp">0,00</b></span><span>Nota: <b id="notaExp">2,00</b></span></div>
-        <textarea id="obsExp" placeholder="Obs Expressão"></textarea>
+    <div style="padding:8px;background:#ffe066;border-bottom:2px solid #000">
+        <select id="codCandidato">
+            <option value="">Selecione CÓDIGO do candidato *</option>
+        </select>
     </div>
 
-    <div class="box">
-        <h3>Interpretação (4,00)</h3>
-        <h3>(Acréscimo)</h3>
-        <div class="texto-interp">
-(interação com o texto, transmissão da mensagem, comunicação, dinâmica, pontuação / acentuação)<br>
--Excelente: (3,60 à 4,00)<br>
--Bom: (3,10 à 3,50)<br>
--Regular: (2,60 à 3,00)<br>
--Suficiente: (2,10 à 2,50)<br>
--Não terminou, etc.: (0 à 2,00)<br>
-</div>
-        <div class="linha-nota"><span class="texto">Nota</span><span class="pontilhado"></span><input id="notaInter" class="input-nota" oninput="limitarDecimal(this, 4.0)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <textarea id="obsInter" placeholder="Obs Interpretação"></textarea>
+    <div class="linha">
+        <div>Categoria:<br><b id="categoria"></b></div>
+        <div>Concorrente:<br><b id="concorrente"></b></div>
+        <div>Entidade:<br><b id="entidade"></b></div>
+        <div>Município:<br><b id="municipio"></b></div>
+        <div>RT:<br><b id="rt"></b></div>
     </div>
 
-    <div class="box">
-        <h3>Fidelidade ao Texto (1,00)</h3>
-        <h3>(Descontos)</h3>
-        <div class="linha-nota"><span class="texto">Letra / Palavra (0,20)</span><span class="pontilhado"></span><input id="fid1" class="input-nota" oninput="limitarDecimal(this, 0.2)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Verso / Estrofe (0,40)</span><span class="pontilhado"></span><input id="fid2" class="input-nota" oninput="limitarDecimal(this, 0.4)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota"><span class="texto">Esqueceu / Lembrado (0,40)</span><span class="pontilhado"></span><input id="fid3" class="input-nota" oninput="limitarDecimal(this, 0.4)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="resumo-direita"><span>DESC: <b id="descFid">0,00</b></span><span>Nota: <b id="notaFid">1,00</b></span></div>
-        <textarea id="obsFid" placeholder="Obs Fidelidade"></textarea>
+    <div style="padding:8px;background:#ffe066;border-bottom:2px solid #000">
+        <b>Poema:</b><br>
+        <input id="poema" type="text">
     </div>
-</div>
 
-<div class="grid-inferior">
-    <div class="box">
-        <b>Descontos:</b><br>
-        <div class="linha-nota">Tempo 9 min (desc. 1,00 p/ min): <input id="descTempo" class="input-nota" oninput="limitarDecimal(this)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota">Indumentária (até 2,00): <input id="descInd" class="input-nota" oninput="limitarDecimal(this, 2.0)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+    <div class="grid">
+        <div class="box">
+            <h3>Fundamento da Voz (3,00)</h3>
+            <div class="linha-nota"><span>Impostação (0,50)</span><span class="pontilhado"></span><input id="voz1" class="input-nota" oninput="limitarDecimal(this, 0.5)" onblur="formatar(this)"></div>
+            <div class="linha-nota"><span>Dicção (0,50)</span><span class="pontilhado"></span><input id="voz2" class="input-nota" oninput="limitarDecimal(this, 0.5)" onblur="formatar(this)"></div>
+            <div class="linha-nota"><span>Inflexão (0,50)</span><span class="pontilhado"></span><input id="voz3" class="input-nota" oninput="limitarDecimal(this, 0.5)" onblur="formatar(this)"></div>
+            <div class="resumo-direita"><span>DESC: <b id="descVoz">0,00</b></span><span>Nota: <b id="notaVoz">3,00</b></span></div>
+            <textarea id="obsVoz" placeholder="Obs Voz"></textarea>
+        </div>
+
+        <div class="box">
+            <h3>Expressão Corporal (2,00)</h3>
+            <div class="linha-nota"><span>Facial (0,30)</span><span class="pontilhado"></span><input id="exp1" class="input-nota" oninput="limitarDecimal(this, 0.3)" onblur="formatar(this)"></div>
+            <div class="linha-nota"><span>Gestual (0,30)</span><span class="pontilhado"></span><input id="exp2" class="input-nota" oninput="limitarDecimal(this, 0.3)" onblur="formatar(this)"></div>
+            <div class="linha-nota"><span>Postura Cênica (0,40)</span><span class="pontilhado"></span><input id="exp3" class="input-nota" oninput="limitarDecimal(this, 0.4)" onblur="formatar(this)"></div>
+            <div class="resumo-direita"><span>DESC: <b id="descExp">0,00</b></span><span>Nota: <b id="notaExp">2,00</b></span></div>
+            <textarea id="obsExp" placeholder="Obs Expressão"></textarea>
+        </div>
+
+        <div class="box">
+            <h3>Interpretação (4,00)</h3>
+            <div class="texto-interp">Excelente (3,6-4,0) | Bom (3,1-3,5) | Regular (2,6-3,0)</div>
+            <div class="linha-nota"><span>Nota</span><span class="pontilhado"></span><input id="notaInter" class="input-nota" oninput="limitarDecimal(this, 4.0)" onblur="formatar(this)"></div>
+            <textarea id="obsInter" placeholder="Obs Interpretação"></textarea>
+        </div>
+
+        <div class="box">
+            <h3>Fidelidade ao Texto (1,00)</h3>
+            <div class="linha-nota"><span>Palavra (0,20)</span><span class="pontilhado"></span><input id="fid1" class="input-nota" oninput="limitarDecimal(this, 0.2)" onblur="formatar(this)"></div>
+            <div class="linha-nota"><span>Verso (0,40)</span><span class="pontilhado"></span><input id="fid2" class="input-nota" oninput="limitarDecimal(this, 0.4)" onblur="formatar(this)"></div>
+            <div class="linha-nota"><span>Esquecimento (0,40)</span><span class="pontilhado"></span><input id="fid3" class="input-nota" oninput="limitarDecimal(this, 0.4)" onblur="formatar(this)"></div>
+            <div class="resumo-direita"><span>DESC: <b id="descFid">0,00</b></span><span>Nota: <b id="notaFid">1,00</b></span></div>
+            <textarea id="obsFid" placeholder="Obs Fidelidade"></textarea>
+        </div>
     </div>
-    <div class="box"><b>Observações Gerais:</b><textarea id="obsGeral"></textarea></div>
-    <div class="box notaFinal">Nota Final<br><span id="notaFinal">6,00</span></div>
-</div>
 
-<div class="grid-rodape">
-    <div class="box">Data/Hora: <span id="data"></span></div>
-    <div class="box">Avaliador Logado: <b id="nomeExibicao"></b></div>
-</div>
+    <div class="grid-inferior">
+        <div class="box">
+            <b>Descontos:</b><br>
+            <div class="linha-nota">Tempo: <input id="descTempo" class="input-nota" oninput="limitarDecimal(this)" onblur="formatar(this)"></div>
+            <div class="linha-nota">Indumentária: <input id="descInd" class="input-nota" oninput="limitarDecimal(this, 2.0)" onblur="formatar(this)"></div>
+        </div>
+        <div class="box"><b>Observações Gerais:</b><textarea id="obsGeral"></textarea></div>
+        <div class="box notaFinal">Nota Final<br><span id="notaFinal">6,00</span></div>
+    </div>
 
-<div class="btns">
-    <button onclick="logout()" class="btn-logout">Encerrar Sessão</button>
-    <button onclick="salvar()" class="btn-salvar">SALVAR AVALIAÇÃO</button>
-</div>
+    <div class="grid-rodape">
+        <div class="box">Data/Hora: <span id="data"></span></div>
+        <div class="box">Avaliador: <b id="nomeExibicao"></b></div>
+    </div>
 
+    <div class="btns">
+        <button onclick="logout()" class="btn-logout">Sair</button>
+        <button onclick="salvar()" class="btn-salvar">SALVAR AVALIAÇÃO</button>
+    </div>
 </div>
 
 <script>
 const URL = "https://script.google.com/macros/s/AKfycbyGTgmc9D4AsHy0oUNQesBEReWs_kQ7nENLm4Gg1sF39tMylibc9d-pUeLe0GizI12g/exec";
 
-// --- CONTROLE DE SESSÃO ---
 window.onload = () => {
     const userLogado = localStorage.getItem("avaliadorDados");
-    if(userLogado) {
-        exibirSistema(JSON.parse(userLogado));
-    }
+    if(userLogado) exibirSistema(JSON.parse(userLogado));
 };
 
 function fazerLogin() {
     const u = document.getElementById("userLogin").value;
     const p = document.getElementById("passLogin").value;
     const btn = document.getElementById("btnLogin");
-
     if(!u || !p) { alert("Preencha tudo!"); return; }
-    
-    btn.disabled = true;
-    btn.innerText = "VERIFICANDO...";
-
+    btn.disabled = true; btn.innerText = "VERIFICANDO...";
     fetch(`${URL}?acao=login&user=${u}&pass=${p}`)
-    .then(r => r.json())
-    .then(res => {
+    .then(r => r.json()).then(res => {
         if(res.status === "OK") {
             localStorage.setItem("avaliadorDados", JSON.stringify(res));
             exibirSistema(res);
         } else {
-            alert(res.msg);
-            btn.disabled = false;
-            btn.innerText = "ENTRAR";
+            alert(res.msg); btn.disabled = false; btn.innerText = "ENTRAR";
         }
-    })
-    .catch(() => {
-        alert("Erro de conexão");
-        btn.disabled = false;
-        btn.innerText = "ENTRAR";
-    });
+    }).catch(() => { alert("Erro de conexão"); btn.disabled = false; btn.innerText = "ENTRAR"; });
 }
 
 function exibirSistema(dados) {
-    console.log("Dados recebidos:", dados); // Isso ajuda a testar no F12 do navegador
     document.getElementById("telaLogin").style.display = "none";
     document.getElementById("appContainer").style.display = "block";
-    
-    // Se no console aparecer 'nome', usamos dados.nome
-    document.getElementById("nomeExibicao").innerText = dados.nome || "Não identificado";
+    document.getElementById("nomeExibicao").innerText = dados.nome || "Avaliador";
     carregarCandidatos();
+    document.getElementById("data").innerText = new Date().toLocaleString("pt-BR");
 }
 
 function logout() {
-    if(confirm("Deseja realmente encerrar a sessão?")) {
-        localStorage.removeItem("avaliadorDados");
-        location.reload();
-    }
+    if(confirm("Encerrar sessão?")) { localStorage.removeItem("avaliadorDados"); location.reload(); }
 }
-
-// --- LÓGICA DO FORMULÁRIO ---
 
 function limitarDecimal(campo, max){
     let valor = campo.value.replace(',', '.').replace(/[^0-9.]/g, '');
-    let num = parseFloat(valor);
-    if (!isNaN(num) && max !== undefined && num > max) {
-        alert("Máximo: " + max);
-        campo.value = max;
-    } else {
-        campo.value = valor.replace('.', ',');
-    }
+    if (max && parseFloat(valor) > max) valor = max.toString();
+    campo.value = valor.replace('.', ',');
     calc();
 }
 
-// Captura o valor do input e garante que o Script entenda como número decimal
+function formatar(campo) {
+    let n = parseFloat(campo.value.replace(',', '.'));
+    campo.value = isNaN(n) ? "0,00" : n.toFixed(2).replace('.', ',');
+}
+
 function v(id) {
     const el = document.getElementById(id);
-    if (!el || el.value === '') return 0;
-    // Converte vírgula em ponto para o JavaScript calcular corretamente
-    return parseFloat(el.value.replace(',', '.')) || 0;
+    return el ? parseFloat(el.value.replace(',', '.')) || 0 : 0;
 }
 
 function calc() {
     const dv = v('voz1') + v('voz2') + v('voz3');
     const de = v('exp1') + v('exp2') + v('exp3');
     const df = v('fid1') + v('fid2') + v('fid3');
-
-    // Exibe no HTML com duas casas e vírgula
     document.getElementById("descVoz").innerText = dv.toFixed(2).replace('.', ',');
     document.getElementById("descExp").innerText = de.toFixed(2).replace('.', ',');
     document.getElementById("descFid").innerText = df.toFixed(2).replace('.', ',');
-    
     document.getElementById("notaVoz").innerText = (3 - dv).toFixed(2).replace('.', ',');
     document.getElementById("notaExp").innerText = (2 - de).toFixed(2).replace('.', ',');
     document.getElementById("notaFid").innerText = (1 - df).toFixed(2).replace('.', ',');
-
     const final = 6 + v('notaInter') - (dv + de + df + v('descTempo') + v('descInd'));
     document.getElementById("notaFinal").innerText = final.toFixed(2).replace('.', ',');
-    
-    // Atualiza a data
-    document.getElementById("data").innerText = new Date().toLocaleString("pt-BR");
 }
 
 let candidatos = [];
 function carregarCandidatos() {
-    fetch(URL + "?acao=candidatos")
-    .then(r => r.json())
-    .then(lista => {
+    fetch(URL + "?acao=candidatos").then(r => r.json()).then(lista => {
         candidatos = lista;
         const sel = document.getElementById("codCandidato");
         sel.innerHTML = `<option value="">Selecione CÓDIGO *</option>`;
@@ -280,178 +230,55 @@ function carregarCandidatos() {
 document.getElementById("codCandidato").onchange = function() {
     const c = candidatos.find(x => String(x.codigo) === String(this.value));
     if(!c) return;
-    document.getElementById("categoria").innerText = c.categoria;
-    document.getElementById("concorrente").innerText = c.concorrente;
-    document.getElementById("entidade").innerText = c.entidade;
-    document.getElementById("municipio").innerText = c.municipio;
-    document.getElementById("rt").innerText = c.rt;
+    ["categoria","concorrente","entidade","municipio","rt"].forEach(id => document.getElementById(id).innerText = c[id] || "");
 };
 
 function salvar() {
-    const dadosSalvos = localStorage.getItem("avaliadorDados");
-    if (!dadosSalvos) { alert("Sessão expirada. Faça login novamente."); return; }
-    
-    const user = JSON.parse(dadosSalvos);
-    
+    const user = JSON.parse(localStorage.getItem("avaliadorDados"));
     if (!v('notaInter')) { alert("Informe a nota de Interpretação!"); return; }
-    const codCampo = document.getElementById("codCandidato");
-    if (!codCampo || !codCampo.value) { alert("Selecione o candidato!"); return; }
+    if (!document.getElementById("codCandidato").value) { alert("Selecione o candidato!"); return; }
 
     const btn = document.querySelector(".btn-salvar");
-    btn.disabled = true;
-    btn.innerText = "SALVANDO...";
+    btn.disabled = true; btn.innerText = "SALVANDO...";
 
     const payload = {
-        usuarioLogin: user.usuario, 
+        usuarioLogin: user.usuario,
         avaliadorNome: user.nome,
-        cod: codCampo.value,
+        cod: document.getElementById("codCandidato").value,
         categoria: document.getElementById("categoria").innerText,
         concorrente: document.getElementById("concorrente").innerText,
         entidade: document.getElementById("entidade").innerText,
         municipio: document.getElementById("municipio").innerText,
         rt: document.getElementById("rt").innerText,
         poema: document.getElementById("poema").value,
-        voz1: v('voz1').toFixed(2).replace('.', ','),
-        voz2: v('voz2').toFixed(2).replace('.', ','),
-        voz3: v('voz3').toFixed(2).replace('.', ','),
-        obsVoz: document.getElementById("obsVoz").value,
-        exp1: v('exp1').toFixed(2).replace('.', ','),
-        exp2: v('exp2').toFixed(2).replace('.', ','),
-        exp3: v('exp3').toFixed(2).replace('.', ','),
-        obsExp: document.getElementById("obsExp").value,
-        notaInter: v('notaInter').toFixed(2).replace('.', ','),
-        obsInter: document.getElementById("obsInter").value,
-        fid1: v('fid1').toFixed(2).replace('.', ','),
-        fid2: v('fid2').toFixed(2).replace('.', ','),
-        fid3: v('fid3').toFixed(2).replace('.', ','),
-        obsFid: document.getElementById("obsFid").value,
-        descTempo: v('descTempo').toFixed(2).replace('.', ','),
-        data: document.getElementById("data").innerText || new Date().toLocaleString("pt-BR"),
-        descInd: v('descInd').toFixed(2).replace('.', ','),
-        obsGeral: document.getElementById("obsGeral").value,
+        voz1: v('voz1'), voz2: v('voz2'), voz3: v('voz3'), obsVoz: document.getElementById("obsVoz").value,
+        exp1: v('exp1'), exp2: v('exp2'), exp3: v('exp3'), obsExp: document.getElementById("obsExp").value,
+        notaInter: v('notaInter'), obsInter: document.getElementById("obsInter").value,
+        fid1: v('fid1'), fid2: v('fid2'), fid3: v('fid3'), obsFid: document.getElementById("obsFid").value,
+        descTempo: v('descTempo'), descInd: v('descInd'), obsGeral: document.getElementById("obsGeral").value,
         notaFinal: document.getElementById("notaFinal").innerText,
-        avaliadorNome: user.nome
+        data: document.getElementById("data").innerText
     };
 
     fetch(URL, { method: "POST", body: JSON.stringify(payload) })
-    .then(r => r.json())
-    .then(r => {
-        if (r.status === "OK") {
-            alert("Avaliação salva com sucesso!");
-        } else {
-            alert("Erro ao salvar: " + r.msg);
-        }
-        limparFormulario();
-    })
-    .catch(err => {
-        // Erro de rede ou CORS - Geralmente salvou no Google
-        alert("Processamento concluído!");
-        limparFormulario();
-    });
+    .then(() => { alert("Avaliação Processada!"); limparFormulario(); })
+    .catch(() => { alert("Avaliação Processada!"); limparFormulario(); });
 }
 
-// Função colocada fora para evitar fechamentos incorretos (closure)
 function limparFormulario() {
-    try {
-        // 1. Destravar o botão primeiro (O MAIS IMPORTANTE)
-        const btn = document.querySelector(".btn-salvar");
-        if (btn) {
-            btn.disabled = false;
-            btn.innerText = "SALVAR AVALIAÇÃO";
-        }
-
-        // 2. Limpar Inputs e Textareas
-        document.querySelectorAll("input").forEach(el => {
-            if (el.id !== "avaliadorNome") el.value = "";
-        });
-        document.querySelectorAll("textarea").forEach(el => el.value = "");
-
-        // 3. Limpar textos de exibição (Candidato)
-        const labels = ["concorrente", "categoria", "entidade", "municipio", "rt", "poema"];
-        labels.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") el.value = "";
-                else el.textContent = "";
-            }
-        });
-
-        // 4. Resetar Notas para padrão
-        const resets = {
-            "descVoz": "0,00", "descExp": "0,00", "descFid": "0,00",
-            "notaVoz": "3,00", "notaExp": "2,00", "notaFid": "1,00",
-            "notaFinal": "6,00"
-        };
-        
-        for (let id in resets) {
-            const el = document.getElementById(id);
-            if (el) el.textContent = resets[id];
-        }
-
-        // 5. Atualizar Data e focar no início
-        const campoData = document.getElementById("data");
-        if (campoData) campoData.textContent = new Date().toLocaleString("pt-BR");
-        
-        window.scrollTo(0, 0);
-        console.log("Formulário limpo com sucesso.");
-
-    } catch (e) {
-        console.error("Erro na limpeza, mas o botão foi destravado: ", e);
-        // Garante o destravamento mesmo se o resto falhar
-        const btn = document.querySelector(".btn-salvar");
-        if (btn) {
-            btn.disabled = false;
-            btn.innerText = "SALVAR AVALIAÇÃO";
-        }
-    }
-}
-
-  // 2. Limpa campos de texto
-  document.querySelectorAll(".input-nota").forEach(el => el.value = "");
-  document.querySelectorAll("textarea").forEach(el => el.value = "");
-  if (document.getElementById("poema")) document.getElementById("poema").value = "";
-  if (document.getElementById("codCandidato")) document.getElementById("codCandidato").value = "";
-
-  // 3. Limpa exibição do candidato
-  const idsParaLimpar = ["concorrente", "categoria", "entidade", "municipio", "rt"];
-  idsParaLimpar.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = "";
-  });
-
-  // 4. Reseta totais e notas para o padrão inicial
-  const resetText = (id, txt) => { const el = document.getElementById(id); if (el) el.textContent = txt; };
-  
-  resetText("descVoz", "0,00");
-  resetText("descExp", "0,00");
-  resetText("descFid", "0,00");
-  resetText("notaVoz", "3,00");
-  resetText("notaExp", "2,00");
-  resetText("notaFid", "1,00");
-  resetText("notaFinal", "6,00");
-
-  // 5. Atualiza data
-  resetText("data", new Date().toLocaleString("pt-BR"));
-
-  // 6. Rola a página para o topo para facilitar a próxima escolha
-  window.scrollTo(0, 0);
-}
-
-
+    const btn = document.querySelector(".btn-salvar");
+    btn.disabled = false; btn.innerText = "SALVAR AVALIAÇÃO";
+    document.querySelectorAll("input").forEach(i => i.value = "");
+    document.querySelectorAll("textarea").forEach(t => t.value = "");
+    ["concorrente","categoria","entidade","municipio","rt"].forEach(id => document.getElementById(id).innerText = "");
+    ["descVoz","descExp","descFid"].forEach(id => document.getElementById(id).innerText = "0,00");
+    document.getElementById("notaVoz").innerText = "3,00";
+    document.getElementById("notaExp").innerText = "2,00";
+    document.getElementById("notaFid").innerText = "1,00";
+    document.getElementById("notaFinal").innerText = "6,00";
+    document.getElementById("data").innerText = new Date().toLocaleString("pt-BR");
+    window.scrollTo(0,0);
 }
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
