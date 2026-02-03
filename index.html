@@ -287,100 +287,102 @@ document.getElementById("codCandidato").onchange = function() {
     document.getElementById("rt").innerText = c.rt;
 };
 
-function salvar(){
-    const user = JSON.parse(localStorage.getItem("avaliadorDados"));
-    if(!v('notaInter')) { alert("Informe a nota de Interpretação!"); return; }
-    if(!document.getElementById("codCandidato").value) { alert("Selecione o candidato!"); return; }
+function salvar() {
+  const user = JSON.parse(localStorage.getItem("avaliadorDados"));
+  if (!v('notaInter')) { alert("Informe a nota de Interpretação!"); return; }
+  if (!document.getElementById("codCandidato").value) { alert("Selecione o candidato!"); return; }
 
-    const btn = document.querySelector(".btn-salvar");
-    btn.disabled = true;
-    btn.innerText = "SALVANDO...";
+  const btn = document.querySelector(".btn-salvar");
+  btn.disabled = true;
+  btn.innerText = "SALVANDO...";
 
-    const payload = {
-        usuarioLogin: user.usuario, 
-        avaliadorNome: user.nome,
-        cod: document.getElementById("codCandidato").value,
-        categoria: document.getElementById("categoria").innerText,
-        concorrente: document.getElementById("concorrente").innerText,
-        entidade: document.getElementById("entidade").innerText,
-        municipio: document.getElementById("municipio").innerText,
-        rt: document.getElementById("rt").innerText,
-        poema: document.getElementById("poema").value, // Adicionado
-        voz1: v('voz1').toFixed(2).replace('.', ','),
-        voz2: v('voz2').toFixed(2).replace('.', ','),
-        voz3: v('voz3').toFixed(2).replace('.', ','),
-        obsVoz: document.getElementById("obsVoz").value,
-        exp1: v('exp1').toFixed(2).replace('.', ','),
-        exp2: v('exp2').toFixed(2).replace('.', ','),
-        exp3: v('exp3').toFixed(2).replace('.', ','),
-        obsExp: document.getElementById("obsExp").value,
-        notaInter: v('notaInter').toFixed(2).replace('.', ','),
-        obsInter: document.getElementById("obsInter").value,
-        fid1: v('fid1').toFixed(2).replace('.', ','),
-        fid2: v('fid2').toFixed(2).replace('.', ','),
-        fid3: v('fid3').toFixed(2).replace('.', ','),
-        obsFid: document.getElementById("obsFid").value,
-        descTempo: v('descTempo').toFixed(2).replace('.', ','),
-        data: document.getElementById("data").innerText || new Date().toLocaleString("pt-BR"),
-        descInd: v('descInd').toFixed(2).replace('.', ','),
-        obsGeral: document.getElementById("obsGeral").value,
-        notaFinal: document.getElementById("notaFinal").innerText, // Já está com vírgula pelo calc()
-        avaliadorNome: user.nome
-    };
+  const payload = {
+    usuarioLogin: user.usuario,
+    avaliadorNome: user.nome,
+    cod: document.getElementById("codCandidato").value,
+    categoria: document.getElementById("categoria").innerText,
+    concorrente: document.getElementById("concorrente").innerText,
+    entidade: document.getElementById("entidade").innerText,
+    municipio: document.getElementById("municipio").innerText,
+    rt: document.getElementById("rt").innerText,
+    poema: document.getElementById("poema").value,
+    voz1: v('voz1').toFixed(2).replace('.', ','),
+    voz2: v('voz2').toFixed(2).replace('.', ','),
+    voz3: v('voz3').toFixed(2).replace('.', ','),
+    obsVoz: document.getElementById("obsVoz").value,
+    exp1: v('exp1').toFixed(2).replace('.', ','),
+    exp2: v('exp2').toFixed(2).replace('.', ','),
+    exp3: v('exp3').toFixed(2).replace('.', ','),
+    obsExp: document.getElementById("obsExp").value,
+    notaInter: v('notaInter').toFixed(2).replace('.', ','),
+    obsInter: document.getElementById("obsInter").value,
+    fid1: v('fid1').toFixed(2).replace('.', ','),
+    fid2: v('fid2').toFixed(2).replace('.', ','),
+    fid3: v('fid3').toFixed(2).replace('.', ','),
+    obsFid: document.getElementById("obsFid").value,
+    descTempo: v('descTempo').toFixed(2).replace('.', ','),
+    data: document.getElementById("data").innerText || new Date().toLocaleString("pt-BR"),
+    descInd: v('descInd').toFixed(2).replace('.', ','),
+    obsGeral: document.getElementById("obsGeral").value,
+    notaFinal: document.getElementById("notaFinal").innerText
+  };
 
-   fetch(URL, { method: "POST", body: JSON.stringify(payload) })
-.then(r => r.json())
-.then(r => {
-    if(r.status === "OK") {
+  fetch(URL, { method: "POST", body: JSON.stringify(payload) })
+    .then(r => r.json())
+    .then(r => {
+      if (r.status === "OK") {
         alert("Avaliação salva com sucesso!");
         limparFormulario();
-    } else {
+      } else {
         alert("Erro: " + r.msg);
-    }
-})
-.catch(err => {
-    // Caso o Google Script redirecione e dê erro de CORS, 
-    // muitas vezes o dado já foi salvo.
-    alert("Avaliação Processada!"); 
-    limparFormulario();
-});
+        btn.disabled = false;
+        btn.innerText = "SALVAR AVALIAÇÃO";
+      }
+    })
+    .catch(err => {
+      // Frequentemente o Google salva mesmo dando erro de CORS
+      alert("Avaliação Processada!");
+      limparFormulario();
+    });
+}
 
-function limparFormulario(){
-
-  // limpa todos os inputs numéricos
-  document.querySelectorAll(".input-nota").forEach(el => el.value="");
-
-  // limpa todos os textareas de observação
-  document.querySelectorAll("textarea").forEach(el => el.value="");
-
-  // limpa poema
-  if(document.getElementById("poema")){
-    document.getElementById("poema").value="";
+function limparFormulario() {
+  // 1. Destrava o botão
+  const btn = document.querySelector(".btn-salvar");
+  if (btn) {
+    btn.disabled = false;
+    btn.innerText = "SALVAR AVALIAÇÃO";
   }
 
-  // volta candidato para vazio
-  codCandidato.value = "";
+  // 2. Limpa campos de texto
+  document.querySelectorAll(".input-nota").forEach(el => el.value = "");
+  document.querySelectorAll("textarea").forEach(el => el.value = "");
+  if (document.getElementById("poema")) document.getElementById("poema").value = "";
+  if (document.getElementById("codCandidato")) document.getElementById("codCandidato").value = "";
 
-  // limpa dados do candidato exibidos
-  concorrente.textContent = "";
-  categoria.textContent   = "";
-  entidade.textContent    = "";
-  municipio.textContent   = "";
-  rt.textContent          = "";
+  // 3. Limpa exibição do candidato
+  const idsParaLimpar = ["concorrente", "categoria", "entidade", "municipio", "rt"];
+  idsParaLimpar.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = "";
+  });
 
-  // reseta totais
-  descVoz.textContent = "0,00";
-  descExp.textContent = "0,00";
-  descFid.textContent = "0,00";
+  // 4. Reseta totais e notas para o padrão inicial
+  const resetText = (id, txt) => { const el = document.getElementById(id); if (el) el.textContent = txt; };
+  
+  resetText("descVoz", "0,00");
+  resetText("descExp", "0,00");
+  resetText("descFid", "0,00");
+  resetText("notaVoz", "3,00");
+  resetText("notaExp", "2,00");
+  resetText("notaFid", "1,00");
+  resetText("notaFinal", "6,00");
 
-  notaVoz.textContent = "3,00";
-  notaExp.textContent = "2,00";
-  notaFid.textContent = "1,00";
+  // 5. Atualiza data
+  resetText("data", new Date().toLocaleString("pt-BR"));
 
-  notaFinal.textContent = "6,00";
-
-  // atualiza data/hora
-  data.textContent = new Date().toLocaleString();
+  // 6. Rola a página para o topo para facilitar a próxima escolha
+  window.scrollTo(0, 0);
 }
 
 
@@ -388,6 +390,7 @@ function limparFormulario(){
 </script>
 </body>
 </html>
+
 
 
 
