@@ -5,9 +5,9 @@
 <title>Avaliação – Declamação</title>
 
 <style>
-body{font-family:Arial;background:#9c8a8a;margin:0;padding:10px}
-.container{max-width:1200px;margin:auto;background:#fff;border:2px solid #000; display:none;} 
-.header{background:#ffe066;border-bottom:2px solid #000;padding:10px}
+body{font-family:Arial;background:#9c8a8a;margin:auto;padding:auto}
+.container{max-width:auto;margin:auto;background:#fff;border:2px solid #000; display:none;} 
+.header{background:#fff;border-bottom:2px solid #000;padding:10px}
 
 #telaLogin {
     max-width: 400px;
@@ -74,8 +74,8 @@ footer {
         <img src="https://raw.githubusercontent.com/CCN1989/Imagens/refs/heads/main/Logo%20pequeno.png" height="70">
         <div style="text-align:center">
             <strong>MTG – MOVIMENTO TRADICIONALISTA GAÚCHO</strong><br>
-            2º Chamas da Poesia – CTG Chama Nativa – 12ª RT<br>
-            (28/02/26 e 01/03/26)<br>
+            25º Rodeio Nativista de Esteio – CTG Chama Nativa – 12ª RT<br>
+            (24, 25 e 26 de abril de 2026)<br>
             <strong>Planilha de Avaliação – Declamação</strong>
         </div>
         <img src="https://github.com/CCN1989/Imagens/blob/main/12RT.png?raw=true" height="70">
@@ -150,10 +150,10 @@ footer {
     <div class="grid-inferior">
     <div class="box">
         <b>Descontos:</b><br>
-        <div class="linha-nota">Tempo 9 min (desc. 1,00 p/ min): <input id="descTempo" class="input-nota" oninput="limitarDecimal(this)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
-        <div class="linha-nota">Indumentária (até 2,00): <input id="descInd" class="input-nota" oninput="limitarDecimal(this, 2.0)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Tempo 9 min (desc. 1,00 p/ min): </span><span class="pontilhado"></span><input id="descTempo" class="input-nota" oninput="limitarDecimal(this)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
+        <div class="linha-nota"><span class="texto">Indumentária (até 2,00): </span><span class="pontilhado"></span><input id="descInd" class="input-nota" oninput="limitarDecimal(this, 2.0)"onblur="this.value = v(this.id).toFixed(2).replace('.', ',')"></div>
     </div>
-        <div class="box"><b>Observações Gerais:</b><textarea id="obsGeral"></textarea></div>
+        <div class="box"><b>Observações Gerais:</b><textarea id="obsGeral" placeholder="Obs Gerais"></textarea></div>
     <div class="box notaFinal">Nota Final<br><span id="notaFinal">6,00</span></div>
 </div>
 
@@ -169,7 +169,7 @@ footer {
 </div>
 
 <footer>
-  Sistema de Avaliação - CTG Chama Nativa © 2026 - dúvidas secretaria@ctgchamanativa.com.br
+  Sistema de Avaliação - Produzido por NossoEventoRS © - Conforme Regulamento Artístico do MTG (2025)
 </footer>
     
 <script>
@@ -304,22 +304,48 @@ function salvar() {
 
 function limparFormulario() {
     const btn = document.querySelector(".btn-salvar");
-    btn.disabled = false; btn.innerText = "SALVAR AVALIAÇÃO";
-    document.querySelectorAll("input").forEach(i => i.value = "");
-    document.querySelectorAll("textarea").forEach(t => t.value = "");
-    ["concorrente","categoria","entidade","municipio","rt"].forEach(id => document.getElementById(id).innerText = "");
-    ["descVoz","descExp","descFid"].forEach(id => document.getElementById(id).innerText = "0,00");
+    btn.disabled = false; 
+    btn.innerText = "SALVAR AVALIAÇÃO";
+
+    // 1. Reseta o Select de Candidatos
+    document.getElementById("codCandidato").value = "";
+
+    // 2. Limpa todos os Inputs de texto e números
+    document.querySelectorAll("input").forEach(i => {
+        i.value = "";
+    });
+
+    // 3. Limpa todas as Áreas de Texto (Observações)
+    document.querySelectorAll("textarea").forEach(t => {
+        t.value = "";
+    });
+
+    // 4. Limpa os textos de identificação do candidato
+    ["concorrente","categoria","entidade","municipio","rt"].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.innerText = "";
+    });
+
+    // 5. Reseta os labels de descontos para o padrão
+    ["descVoz","descExp","descFid"].forEach(id => {
+        document.getElementById(id).innerText = "0,00";
+    });
+
+    // 6. Reseta as notas base e a nota final
     document.getElementById("notaVoz").innerText = "3,00";
     document.getElementById("notaExp").innerText = "2,00";
     document.getElementById("notaFid").innerText = "1,00";
     document.getElementById("notaFinal").innerText = "6,00";
+
+    // 7. Atualiza a data/hora para o momento do novo atendimento
     document.getElementById("data").innerText = new Date().toLocaleString("pt-BR");
-    window.scrollTo(0,0);
+
+    // 8. Volta para o topo da página para facilitar o novo preenchimento
+    window.scrollTo(0, 0);
 }
 </script>
 </body>
 </html>
-
 
 
 
